@@ -1,0 +1,35 @@
+#Token
+from discord.ext import commands
+import discord
+
+intents = discord.Intents.all()
+intents.members = True
+
+bot = commands.Bot(command_prefix=".", help_command= None, intents = intents)
+
+@bot.event
+async def on_ready():
+    print("this bot in now online")
+
+@bot.event
+async def on_message(message):
+    Blacklisted = ["Word", "Word", "Word", ".com", "https://", "http://", "www.", "discord.gg", ".gif", ".mov",".png", ".rtf", ".org", ".html",".bat", ".pdf"]
+    report_logs = bot.get_channel(ID Channel)
+    for m in Blacklisted: 
+        if m in message.content or m.lower() in message.content: 
+            await report_logs.send(f"{message.author.mention} has tried to use blacklisted word.")
+            await message.delete()
+            await message.channel.send(f"You can not send this message {message.author.mention}.")
+
+@bot.command()
+async def Max(ctx):
+    embed=discord.Embed(title="title", description="description", color=0xff0000)
+    embed.add_field(name="field", value="value", inline=False)
+    embed.set_footer(text="footer")
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def test(ctx):
+    await ctx.send("Hello")
+ 
+bot.run("Token")
