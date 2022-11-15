@@ -30,4 +30,4 @@ async def test(ctx):
 #           await message.delete()
 #           await message.channel.send(f"You can not send this message {message.author.mention}.")
 
-bot.run("MTA0MTQ4NzcwNTM4Njc4Mjc0MA.GxuFzD.Qslh7AMhoGObb-tMbKZgr1bpCd6Cc4xzISOBNQ")
+bot.run("Token")
